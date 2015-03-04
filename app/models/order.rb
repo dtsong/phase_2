@@ -23,10 +23,14 @@ class Order < ActiveRecord::Base
 	# ---------------------------
 	# this method creates a base64 payment string for payment_receipt 
 	def pay 
-		# using string addition, append order_id, grand_total, and order date to a string for encoding.
-		string_to_encode = "order: " + self.order_id.to_s + "; amount_paid: " + 
-						   self.grand_total.to_s + "; received: " + self.date.to_s
-		return Base64.encode64(string_to_encode)
+		# get an array of paid order ids
+		all_paid_orders_ids = Order.paid.all.map { |o| o.id  }
+		# if order has not yet been paid (its id is not in the array), generate the payment_receipt
+		if !all_paid_orders_ids.include?(self.id)
+			# using string addition, append order_id, grand_total, and order date to a string for encoding.
+			string_to_encode = "order: " + self.order_id.to_s + "; amount_paid: " + self.grand_total.to_s + "; received: " + self.date.to_s
+			self.payment_receipt = Base64.encode64(string_to_encode)
+		end
 	end
 
 	def customer_is_active_in_Bread_Express

@@ -38,6 +38,9 @@ gem 'bcrypt-ruby', '~> 3.1.2'
 # Use a gem for handling pagination
 gem 'will_paginate'
 
+# This gem gives us date validation capabilities
+gem 'validates_timeliness', '~> 3.0'
+
 # Additional gems that are very useful in Rails development
 group :development do
 	gem 'quiet_assets'

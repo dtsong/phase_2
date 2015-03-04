@@ -23,7 +23,6 @@ FactoryGirl.define do
 		date "2015-03-03"
 		association :customer
 		association :address
-		grand_total 22.50; 6.27
-		payment_receipt 
+		grand_total 22.50
 	end 
 end
