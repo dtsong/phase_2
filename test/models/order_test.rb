@@ -32,28 +32,28 @@ class OrderTest < ActiveSupport::TestCase
 			destroy_orders
 		end
 
-		should "put orders in chronological order by date" do 
+		# should "put orders in chronological order by date" do 
 
-		end 
+		# end 
 
-		should "return all orders that have been paid" do 
+		# should "return all orders that have been paid" do 
 
-		end
+		# end
 
-		should "return all orders for a given customer" do 
+		# should "return all orders for a given customer" do 
 
-		end 
+		# end 
 
-		should "ensure that customer_ids will be limited to existing active customers" do
+		# should "ensure that customer_ids will be limited to existing active customers" do
 
-		end
+		# end
 
-		should "ensure that address_ids will be limited to existing active addresses" do 
+		# should "ensure that address_ids will be limited to existing active addresses" do 
 
-		end
+		# end
 
-		should "ensure that the pay method is working as it should" do 
+		# should "ensure that the pay method is working as it should" do 
 
-		end
+		# end
 	end 
 end

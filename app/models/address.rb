@@ -26,18 +26,16 @@ class Address < ActiveRecord::Base
 	# ----------------------------
 	validates_presence_of :recipient, :street_1, :zip
 	validates_inclusion_of :state, in: STATES_LIST.map {|key, value| value}, message: "is not an option", allow_blank: true
-	#validate check_for_duplicate_addresses: on: :create
+	validate :check_for_duplicate_addresses, on: :create
 
 
 	# Private methods for custom validations
 	# ----------------------------
 
-	#def check_for_duplicate_addresses 
- 		# gets a master array of all 
-
- 		# SELECT 
- 		# FROM 
- 		# WHERE self.recipient = recipient AND self.zip = zip
-
-	#end
+	def check_for_duplicate_addresses
+ 		# add error if a newly created address has the same recipient and zip code as a previously made record
+ 		if !Address.where(recipient: self.recipient, zip: self.zip).empty?
+ 			errors.add(:address, "already exists in the Bread Express")
+ 		end
+	end
 end
