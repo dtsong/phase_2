@@ -7,6 +7,8 @@ class Order < ActiveRecord::Base
 	# Validations
 	# ---------------------------
 	validates_date :date
+	# ensures that the grand_total input has 2 decimal places or less
+	validates :grand_total, :format => { :with => /\A\d+(?:\.\d{0,2})?\z/ }, :numericality => {:greater_than => 0}
 	validate :customer_is_active_in_Bread_Express
 	validate :address_is_active_in_Bread_Express
 

@@ -9,6 +9,12 @@ class OrderTest < ActiveSupport::TestCase
 
   	# Validation Tests
   	# ----------------------------------------
+  	should allow_value(24.65).for(:grand_total)
+  	should allow_value(3).for(:grand_total)
+  	should_not allow_value("WOW").for(:grand_total)
+  	should_not allow_value(0).for(:grand_total)
+  	should_not allow_value(-10000).for(:grand_total)
+
   	should allow_value(Date.today).for(:date)
 	should allow_value(1.day.ago.to_date).for(:date)
 	should allow_value(1.day.from_now.to_date).for(:date)
@@ -46,16 +52,36 @@ class OrderTest < ActiveSupport::TestCase
 			assert_equal 2, Order.for_customer(@daniel).size
 		end 
 
-		# should "ensure that customer_ids will be limited to existing active customers" do
+		# test the custom validation 'customer_is_active_in_Bread_Express'
+		should "ensure that customer_ids will be limited to existing active customers" do
+			# Sibo is inactive while the address is active
+      		# Using .build to ensure the bad data doesn't end the test early
+			inactive_customer_order = FactoryGirl.build(:order, address: @dtsong_cmu, customer: @sibo)
+			deny inactive_customer_order.valid?
+		end
 
-		# end
+		# test the custom validation 'address_is_active_in_Bread_Express'
+		should "ensure that address_ids will be limited to existing active addresses" do 
+			# LifeRay's address is inactive while customer is active
+			inactive_address_order = FactoryGirl.build(:order, address: @liferay, customer: @daniel)
+			deny inactive_address_order.valid?
+		end
 
-		# should "ensure that address_ids will be limited to existing active addresses" do 
+		should "ensure that the pay method is working" do 
+			# directly make the encoded string using the base64 code for Order.first record
+			first_order_to_encode = "order: " + Order.first.id.to_s + "; amount_paid: " + Order.first.grand_total.to_s + "; received: " + Order.first.date.to_s
+			first_encoded_string = Base64.encode64(first_order_to_encode)
+			# do likewise for Order.last record
+			last_order_to_encode = "order: " + Order.last.id.to_s + "; amount_paid: " + Order.last.grand_total.to_s + "; received: " + Order.last.date.to_s
+			last_encoded_string = Base64.encode64(last_order_to_encode)
 
-		# end
+			# 'pay' should insert an encrypted string into 'payment_receipt' in the order record
+			Order.first.pay 
+			Order.last.pay 
 
-		# should "ensure that the pay method is working as it should" do 
-
-		# end
+			# ensure that the string inserted is as it was in the rails console.
+			assert_equal first_encoded_string, Order.first.payment_receipt
+			assert_equal last_encoded_string, Order.last.payment_receipt
+		end
 	end 
 end
