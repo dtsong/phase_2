@@ -17,7 +17,6 @@ module Contexts
 			@daniel_1.destroy
 			@daniel_2.destroy
 			@russell_1.destroy
-			@josh_1.destroy
 			@jun_1.destroy
 		end
 	end

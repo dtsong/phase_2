@@ -20,25 +20,27 @@ class OrderTest < ActiveSupport::TestCase
 	context "Given context" do 
 		# create objects from factories
 		setup do 
-			create_orders
 			create_customers
 			create_addresses
+			create_orders
 		end
 
 		# destroy objects as needed
 		teardown do 
+			destroy_orders
 			destroy_addresses
 			destroy_customers
-			destroy_orders
 		end
 
-		# should "put orders in chronological order by date" do 
+		should "put orders in chronological order by date" do 
+			assert_equal ["2015-03-03", "2015-03-04", "2015-03-05", "2015-03-09"], Order.chronological.map { |o| o.date.to_s }
+		end 
 
-		# end 
-
-		# should "return all orders that have been paid" do 
-
-		# end
+		should "return all orders that have been paid" do 
+			@daniel_1.pay
+			@russell_1.pay
+			assert_equal 2, Order.paid.to_a.size
+		end
 
 		# should "return all orders for a given customer" do 
 

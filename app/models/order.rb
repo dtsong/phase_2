@@ -13,7 +13,7 @@ class Order < ActiveRecord::Base
 	# Scopes
 	# ---------------------------
 	# arrange orders with most recent at the top
-	scope :chronological, -> { order('date DESC') }
+	scope :chronological, -> { order('date ASC') }
 	# returns all paid orders and have a payment receipt
 	scope :paid, -> { where.not(payment_receipt => nil)}
 	# find all orders for a particular customer
