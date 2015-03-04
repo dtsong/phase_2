@@ -105,9 +105,10 @@ class AddressTest < ActiveSupport::TestCase
 		should "show that you can't add an address with the same recipient and zip code" do
 			# make two addresses for Ethan Chan
 			@ethan_1 = FactoryGirl.create(:address, recipient: "Ethan Chan", zip: "15213")
-			@ethan_2 = FactoryGirl.create(:address, recipient: "Ethan Chan", zip: "15213")
+			@ethan_2 = FactoryGirl.build(:address, recipient: "Ethan Chan", zip: "15213")
 			# there can only be one...
-			assert_equal 1, Address.where(recipient: "Ethan Chan", zip: "15213")
+			assert_equal 1, Address.where(recipient: "Ethan Chan", zip: "15213").size
+			deny @ethan_2.save
 		end
 
 	end
