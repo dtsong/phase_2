@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @order.date %>
+</p>
+
+<p>
+  <strong>Customer:</strong>
+  <%= @order.customer_id %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @order.address_id %>
+</p>
+
+<p>
+  <strong>Grand total:</strong>
+  <%= @order.grand_total %>
+</p>
+
+<p>
+  <strong>Payment receipt:</strong>
+  <%= @order.payment_receipt %>
+</p>
+
+<%= link_to 'Edit', edit_order_path(@order) %> |
+<%= link_to 'Back', orders_path %>
