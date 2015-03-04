@@ -15,7 +15,7 @@ class Order < ActiveRecord::Base
 	# arrange orders with most recent at the top
 	scope :chronological, -> { order('date ASC') }
 	# returns all paid orders and have a payment receipt
-	scope :paid, -> { where.not(payment_receipt => nil)}
+	scope :paid, -> { where.not(:payment_receipt => nil)}
 	# find all orders for a particular customer
 	scope :for_customer, -> (customer_id) { where("customer_id = ?", customer_id) }
 
@@ -28,7 +28,7 @@ class Order < ActiveRecord::Base
 		# if order has not yet been paid (its id is not in the array), generate the payment_receipt
 		if !all_paid_orders_ids.include?(self.id)
 			# using string addition, append order_id, grand_total, and order date to a string for encoding.
-			string_to_encode = "order: " + self.order_id.to_s + "; amount_paid: " + self.grand_total.to_s + "; received: " + self.date.to_s
+			string_to_encode = "order: " + self.id.to_s + "; amount_paid: " + self.grand_total.to_s + "; received: " + self.date.to_s
 			self.payment_receipt = Base64.encode64(string_to_encode)
 			save!
 		end

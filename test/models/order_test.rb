@@ -42,9 +42,9 @@ class OrderTest < ActiveSupport::TestCase
 			assert_equal 2, Order.paid.to_a.size
 		end
 
-		# should "return all orders for a given customer" do 
-
-		# end 
+		should "return all orders for a given customer" do 
+			assert_equal 2, Order.for_customer(@daniel).size
+		end 
 
 		# should "ensure that customer_ids will be limited to existing active customers" do
 
