@@ -25,6 +25,16 @@ class AddressTest < ActiveSupport::TestCase
 	should_not allow_value("Canada").for(:state)
 	should_not allow_value("1").for(:state)
 
+	# Zip validations
+	# -------------------------------------
+	should allow_value(92128).for(:zip)
+	should allow_value(10495).for(:zip)
+	should allow_value(49506).for(:zip)
+
+	should_not allow_value("wow so bad").for(:zip)
+	should_not allow_value(2.3045).for(:zip)
+	should_not allow_value(-194056).for(:zip)
+
 	# -------------------------------------
 	context "Given context" do
 		# create objects with factories

@@ -25,6 +25,7 @@ class Address < ActiveRecord::Base
 	# Validations
 	# ----------------------------
 	validates_presence_of :recipient, :street_1, :zip
+    validates_format_of :zip, with: /\A\d{5}\z/, message: "should be five digits long"
 	validates_inclusion_of :state, in: STATES_LIST.map {|key, value| value}, message: "is not an option", allow_blank: true
 	validate :check_for_duplicate_addresses, on: :create
 
