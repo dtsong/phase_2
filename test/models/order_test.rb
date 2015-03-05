@@ -14,6 +14,7 @@ class OrderTest < ActiveSupport::TestCase
   	should_not allow_value("WOW").for(:grand_total)
   	should_not allow_value(0).for(:grand_total)
   	should_not allow_value(-10000).for(:grand_total)
+  	should_not allow_value(10.404).for(:grand_total)
 
   	should allow_value(Date.today).for(:date)
 	should allow_value(1.day.ago.to_date).for(:date)

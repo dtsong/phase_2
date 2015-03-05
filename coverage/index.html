@@ -14,7 +14,7 @@
       <img src="./assets/0.8.0/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2015-03-04T23:51:32-05:00">2015-03-04T23:51:32-05:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2015-03-04T23:55:14-05:00">2015-03-04T23:55:14-05:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -25,7 +25,7 @@
      covered at
      <span class="covered_strength">
        <span class="green">
-         17.43
+         17.61
        </span>
     </span> hits/line)
   </h2>
@@ -97,7 +97,7 @@
         <td>17</td>
         <td>17</td>
         <td>0</td>
-        <td>12.8</td>
+        <td>12.9</td>
       </tr>
       
       <tr>
@@ -107,7 +107,7 @@
         <td>19</td>
         <td>19</td>
         <td>0</td>
-        <td>23.6</td>
+        <td>23.7</td>
       </tr>
       
       <tr>
@@ -117,7 +117,7 @@
         <td>28</td>
         <td>28</td>
         <td>0</td>
-        <td>18.4</td>
+        <td>18.7</td>
       </tr>
       
     </tbody>
@@ -170,7 +170,7 @@
      covered at
      <span class="covered_strength">
        <span class="green">
-         18.46
+         18.64
        </span>
     </span> hits/line)
   </h2>
@@ -202,7 +202,7 @@
         <td>17</td>
         <td>17</td>
         <td>0</td>
-        <td>12.8</td>
+        <td>12.9</td>
       </tr>
       
       <tr>
@@ -212,7 +212,7 @@
         <td>19</td>
         <td>19</td>
         <td>0</td>
-        <td>23.6</td>
+        <td>23.7</td>
       </tr>
       
       <tr>
@@ -222,7 +222,7 @@
         <td>28</td>
         <td>28</td>
         <td>0</td>
-        <td>18.4</td>
+        <td>18.7</td>
       </tr>
       
     </tbody>
@@ -579,8 +579,8 @@
           <code class="ruby">	# gets all active addresses</code>
         </li>
       
-        <li class="covered" data-hits="42" data-linenumber="10">
-          <span class="hits">42</span>
+        <li class="covered" data-hits="43" data-linenumber="10">
+          <span class="hits">43</span>
           
           <code class="ruby">	scope :active, -&gt; { where(active: true) }</code>
         </li>
@@ -879,8 +879,8 @@
           <code class="ruby">	# gets all active customers</code>
         </li>
       
-        <li class="covered" data-hits="43" data-linenumber="15">
-          <span class="hits">43</span>
+        <li class="covered" data-hits="44" data-linenumber="15">
+          <span class="hits">44</span>
           
           <code class="ruby">	scope :active, -&gt; { where(active: true) }</code>
         </li>
@@ -1329,8 +1329,8 @@
           <code class="ruby">	    # get an array of all active customers in the PATS system</code>
         </li>
       
-        <li class="covered" data-hits="160" data-linenumber="41">
-          <span class="hits">160</span>
+        <li class="covered" data-hits="161" data-linenumber="41">
+          <span class="hits">161</span>
           
           <code class="ruby">	    all_customer_ids = Customer.active.all.map{|c| c.id}</code>
         </li>
@@ -1341,20 +1341,20 @@
           <code class="ruby">	    # add error unless the customer id is in the array of active owners</code>
         </li>
       
-        <li class="covered" data-hits="40" data-linenumber="43">
-          <span class="hits">40</span>
+        <li class="covered" data-hits="41" data-linenumber="43">
+          <span class="hits">41</span>
           
           <code class="ruby">	    unless all_customer_ids.include?(self.customer_id)</code>
         </li>
       
-        <li class="covered" data-hits="11" data-linenumber="44">
-          <span class="hits">11</span>
+        <li class="covered" data-hits="12" data-linenumber="44">
+          <span class="hits">12</span>
           
           <code class="ruby">	      errors.add(:customer, &quot;is not an active customer in Bread Express&quot;)</code>
         </li>
       
-        <li class="covered" data-hits="11" data-linenumber="45">
-          <span class="hits">11</span>
+        <li class="covered" data-hits="12" data-linenumber="45">
+          <span class="hits">12</span>
           
           <code class="ruby">	      return false</code>
         </li>
@@ -1395,8 +1395,8 @@
           <code class="ruby">	    # get an array of all active addresses in the PATS system</code>
         </li>
       
-        <li class="covered" data-hits="130" data-linenumber="52">
-          <span class="hits">130</span>
+        <li class="covered" data-hits="131" data-linenumber="52">
+          <span class="hits">131</span>
           
           <code class="ruby">	    all_address_ids = Address.active.all.map{|a| a.id}</code>
         </li>
@@ -1407,20 +1407,20 @@
           <code class="ruby">	    # add error unless the address id is in the array of active addresses</code>
         </li>
       
-        <li class="covered" data-hits="40" data-linenumber="54">
-          <span class="hits">40</span>
+        <li class="covered" data-hits="41" data-linenumber="54">
+          <span class="hits">41</span>
           
           <code class="ruby">	    unless all_address_ids.include?(self.address_id)</code>
         </li>
       
-        <li class="covered" data-hits="12" data-linenumber="55">
-          <span class="hits">12</span>
+        <li class="covered" data-hits="13" data-linenumber="55">
+          <span class="hits">13</span>
           
           <code class="ruby">	      errors.add(:address, &quot;is not an active address in Bread Express&quot;)</code>
         </li>
       
-        <li class="covered" data-hits="12" data-linenumber="56">
-          <span class="hits">12</span>
+        <li class="covered" data-hits="13" data-linenumber="56">
+          <span class="hits">13</span>
           
           <code class="ruby">	      return false</code>
         </li>
